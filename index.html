@@ -6,60 +6,80 @@
     <script type="text/javascript" src="index.js"></script>
   </head>
   <body>
-      
+    <form id="new-user-form">
+      <h1>Covid19</h1>
+     
+      <p>Please fill in this form to create an account.</p>
+    
+       
+      <hr>
+    
+        <label for="name"><b>Name</b></label>
+        <input id= 'input-name' type="text" placeholder="Enter First Name" name="name" required>
+        <label for="lastname"><b>Lastname</b></label>
+        <input id= 'input-lastname'type="text" placeholder="Enter Lastname" name="lastname" required>
+        <label for="age"><b>Age</b></label>
+        <input id= 'input-age'type="text" placeholder="Enter your Age " name="age" required>
+        <label for="age"><b>Gender</b></label>
+        <input id= 'input-gender'type="text" placeholder="Enter your Gender " name="gender" required>
+        <br></br>
+        <hr>
 
-    <div class="form-container">
+        <h3>SYMPTOMS</h3>
+          
+        
+        <label for="select-breed">Fever greater than 100 degrees </label>
+          <input type="radio" name="answer" id="yes">Yes
+          <input type="radio" name="answer" id="no">No
+         </select>
+        <br><br>
 
-          <h3> USERS </h3>
-          <div class="form-users">
+          <label for="select-breed">Dry Cough</label>
+          <input type="radio" name="answer" id="yes">Yes
+          <input type="radio" name="answer" id="no">No
+          </select>
+          
 
+          <br><br>
+          <label for="select-breed">Shortness of Breath</label>
+          <input type="radio" name="answer" id="yes">Yes
+          <input type="radio" name="answer" id="no">No
+          </select>
+          <br></br>
 
-
-          </div>
+           <label for="select-breed">Sore Throat</label>
+           <input type="radio" name="answer" id="yes">Yes
+           <input type="radio" name="answer" id="no">No
+           </select>
+           <br><br>
+           
+           <label for="select-breed">Runny Nose</label>
+           <input type="radio" name="answer" id="yes">Yes
+           <input type="radio" name="answer" id="no">No
+           </select>
+           <br></br>
+           
+           <label for="select-breed">Other</label>
+           <br><br>
+           <textarea id='input-description' name="description" rows="8" cols="80" value="" placeholder="Enter your symptoms description..."></textarea>
          
+           <br><br>
+           <input type="submit" name="submit">
+      
+       
+        <hr>
+    
+      </form>
 
-          <h3>SYMPTOMS</h3>
-          
-          <label for="select-symptom">Fewer</label>
-    <select id="level-dropdown" name="select-symptom">
-      <option value="a">1</option>
-      <option value="b">2</option>
-      <option value="c">3</option>
-      <option value="d">4</option>
-      <option value="d">5</option>
-    </select>
-
-          <br><br>
-          <label for="select-symptom">Coughing</label>
-    <select id="level-dropdown" name="select-symptom">
-      <option value="a">1</option>
-      <option value="b">2</option>
-      <option value="c">3</option>
-      <option value="d">4</option>
-      <option value="d">5</option>
-    </select>
-          <br><br>
-          <label for="select-breed">Tiredness</label>
-          <select id="breed-dropdown" name="select-breed">
-            <option value="a">1</option>
-            <option value="b">2</option>
-            <option value="c">3</option>
-            <option value="d">4</option>
-            <option value="d">5</option>
-          </select>
-          <br><br>
-          
           <h3> QUARANTINE PERIOD </h3>
-          <select id="categories" name="categories">
-            <option value="1">days</option>
-          </select>
+          <input type="text" placeholder="days " name="days" required>
           <br><br>
           
           
           
-          <div id="syllabus-container">
+        
             
-          </div>
+         
    
           
         </body>
