@@ -41,17 +41,15 @@ function createFormHandler(e) {
 }
 
 function postFetch (name,lastname, age, gender){
+  //build my body object outside of my fetch 
+  const bodyData = {name,lastname,age,gender}
   console.log(name,lastname,age,gender)
+
+
   fetch("http://localhost:3000/users", {
     method: "POST",
     headers: { "Content-Type": "application/json"},
-    body: JSON.stringify({
-      name: name,
-      age: age,
-      lastname: lastname,
-      gender: gender
-
-    })
+    body: JSON.stringify(bodyData)
   })
   .then(response => response.json())
   .then(user => {
