@@ -37,13 +37,43 @@ function createFormHandler(e) {
   const lastname = document.querySelector('#input-lastname').value
   const age = document.querySelector('#input-age').value
   const gender = document.querySelector('#input-gender').value
-  postFetch(name, lastname, age, gender)
+  const feverYes = document.querySelector("#feverYes").checked
+  const coughYes = document.querySelector("#coughYes").checked
+  const breathYes = document.querySelector("#breathYes").checked
+  const throatYes = document.querySelector("#throatYes").checked
+  const noseYes = document.querySelector("#noseYes").checked
+  const other = document.querySelector("#input-description").value
+  const daysId = document.querySelector("#days").value
+  const bodyData = {
+   name: name,
+   lastname: lastname,
+   gender: gender,
+   age:age,
+   symptoms_attributes:[{
+
+   fever: feverYes ? "Yes" : "No",
+   cough: coughYes ?  "Yes" : "No",
+   breath: breathYes ? "Yes" : "No",
+   throat: throatYes ? "Yes" : "No",
+   nose: noseYes ? "Yes" : "No",
+   other: other
+    }
+     
+   ],
+   quarantines_attributes:[{
+     days: daysId
+   }]
+    
+
+
+  }
+  postFetchUser(bodyData)
 }
 
-function postFetch (name,lastname, age, gender){
+function postFetchUser (bodyData){
   //build my body object outside of my fetch 
-  const bodyData = {name,lastname,age,gender}
-  console.log(name,lastname,age,gender)
+
+  console.log(bodyData)
 
 
   fetch("http://localhost:3000/users", {
@@ -56,3 +86,18 @@ function postFetch (name,lastname, age, gender){
   console.log(user);
   })
 }
+
+
+
+
+
+
+
+
+// fetch("http://localhost:3000/user_symptoms",{
+//   method:"POST",
+//   headers: {"Content-Type": "application/json"},
+//   body: JSON.stringify(bodyData)
+
+// })
+

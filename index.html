@@ -42,52 +42,56 @@
         <input id= 'input-gender'type="text" placeholder="Enter your Gender " name="gender" required>
         <br></br>
         <hr>
+    
 
-        <h3>SYMPTOMS</h3>
+        <div class ="container">
+       
+      <h3>SYMPTOMS</h3>
           
         
         <label for="select-breed">Fever greater than 100 degrees </label>
-          <input type="radio" name="answer" id="yes">Yes
-          <input type="radio" name="answer" id="no">No
+          <input type="radio" name="fever" id="feverYes" value="Yes">Yes
+          <input type="radio" name="fever" id="feverNo"  value= "No"> No
          </select>
         <br><br>
 
           <label for="select-breed">Dry Cough</label>
-          <input type="radio" name="answer" id="yes">Yes
-          <input type="radio" name="answer" id="no">No
+          <input type="radio" name="cough" id="coughYes" value="Yes">Yes
+          <input type="radio" name="cough" id="coughNo"  value ="No">No
           </select>
           
 
           <br><br>
           <label for="select-breed">Shortness of Breath</label>
-          <input type="radio" name="answer" id="yes">Yes
-          <input type="radio" name="answer" id="no">No
+          <input type="radio" name="breath" id="breathYes" value="Yes">Yes
+          <input type="radio" name="breath" id="breathNo"  value="No">No
           </select>
           <br></br>
 
            <label for="select-breed">Sore Throat</label>
-           <input type="radio" name="answer" id="yes">Yes
-           <input type="radio" name="answer" id="no">No
+           <input type="radio" name="throat" id="throatYes" value="Yes">Yes
+           <input type="radio" name="throat" id="throatNo"  value="No">No
            </select>
            <br><br>
            
            <label for="select-breed">Runny Nose</label>
-           <input type="radio" name="answer" id="yes">Yes
-           <input type="radio" name="answer" id="no">No
+           <input type="radio" name="nose" id="noseYes" value="Yes">Yes
+           <input type="radio" name="nose" id="noseNo"  value="No">No
            </select>
            <br></br>
            
            <label for="select-breed">Other</label>
            <br><br>
            <textarea id='input-description' name="description" rows="10" cols="110" value="" placeholder="Enter your other symptoms..."></textarea>
-    
+          </form>
+          </div>
         <hr>
- 
+        <form id="quarantine-form">
           <h3> QUARANTINE PERIOD </h3>
-          <input type="text" placeholder="days " name="days" required>
+          <input type="text" placeholder="How many days " name="days" id="days" value=  >
           <br><br>
           
-         
+        </form>
           <input type="submit" name="submit">
         </form>
       </div>
