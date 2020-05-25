@@ -88,7 +88,17 @@
         <hr>
         <form id="quarantine-form">
           <h3> QUARANTINE PERIOD </h3>
-          <input type="text" placeholder="How many days " name="days" id="days" value=  >
+          <label for="start">Start date:</label>
+
+<input type="date" id="start" name="trip-start"
+       value="2020-01-01"
+       min="2019-12-01" max="2025-12-31">
+       <br></br>
+       <label for="start">End date:</label>
+
+<input type="date" id="end" name="trip-end"
+       value="2020-01-01"
+       min="2019-12-01" max="2025-12-31">
           <br><br>
           
         </form>

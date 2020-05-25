@@ -1,21 +1,22 @@
 addEventListener('DOMContentLoaded',() => {
   const div = document.querySelector(".form-users")
-  getUsers()
+  // getUsers()
+  
   
   const createUsersForm =  document.querySelector("#new-user-form")
   createUsersForm.addEventListener("submit",(e) => createFormHandler(e))
 
 })
 
- function getUsers(){
-   fetch("http://localhost:3000/users")
-   .then(r => r.json())
-   .then(users => users.forEach(user =>  renderUsers(user)))
+//  function getUsers(){
+//    fetch("http://localhost:3000/users")
+//    .then(r => r.json())
+//    .then(users => users.forEach(user =>  renderUsers(user)))
   
 
- }
+//  }
    
- function renderUsers(user){
+//  function renderUsers(user){
   //  console.log(user.symptoms)
   
   //  div.className ="card"
@@ -27,7 +28,7 @@ addEventListener('DOMContentLoaded',() => {
   //  div.appendChild(userUl)
    
   
-}
+// }
 
 function createFormHandler(e) {
   
@@ -43,7 +44,8 @@ function createFormHandler(e) {
   const throatYes = document.querySelector("#throatYes").checked
   const noseYes = document.querySelector("#noseYes").checked
   const other = document.querySelector("#input-description").value
-  const daysId = document.querySelector("#days").value
+  const startDate = document.querySelector("#start").value
+  const endDate = document.querySelector("#end").value
   const bodyData = {
    name: name,
    lastname: lastname,
@@ -61,7 +63,8 @@ function createFormHandler(e) {
      
    ],
    quarantines_attributes:[{
-     days: daysId
+     startdate: startDate,
+     enddate: endDate
    }]
     
 
@@ -93,11 +96,4 @@ function postFetchUser (bodyData){
 
 
 
-
-// fetch("http://localhost:3000/user_symptoms",{
-//   method:"POST",
-//   headers: {"Content-Type": "application/json"},
-//   body: JSON.stringify(bodyData)
-
-// })
 
