@@ -51,14 +51,16 @@ function createFormHandler(e) {
    lastname: lastname,
    gender: gender,
    age:age,
-   symptoms_attributes:[{
-
-   fever: feverYes ? "Yes" : "No",
-   cough: coughYes ?  "Yes" : "No",
-   breath: breathYes ? "Yes" : "No",
-   throat: throatYes ? "Yes" : "No",
-   nose: noseYes ? "Yes" : "No",
-   other: other
+   user_symptoms_attributes:[{
+  symptom_attributes:{
+    
+    fever: feverYes ? "Yes" : "No",
+    cough: coughYes ?  "Yes" : "No",
+    breath: breathYes ? "Yes" : "No",
+    throat: throatYes ? "Yes" : "No",
+    nose: noseYes ? "Yes" : "No",
+    other: other
+  }
     }
      
    ],
@@ -67,7 +69,7 @@ function createFormHandler(e) {
      enddate: endDate
    }]
     
-
+ 
 
   }
   postFetchUser(bodyData)
