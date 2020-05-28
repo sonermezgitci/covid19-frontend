@@ -1,6 +1,6 @@
 addEventListener('DOMContentLoaded',() => {
-  const div = document.querySelector(".form-users")
-  // getUsers()
+  // const div = document.querySelector(".form-users")
+  // getUsers() its for get users on the DOM for  Fetch Read Test! 
   
   
   const createUsersForm =  document.querySelector("#new-user-form")
@@ -51,8 +51,8 @@ function createFormHandler(e) {
    lastname: lastname,
    gender: gender,
    age:age,
-   user_symptoms_attributes:[{
-  symptom_attributes:{
+   symptoms_attributes:[{
+  
     
     fever: feverYes ? "Yes" : "No",
     cough: coughYes ?  "Yes" : "No",
@@ -60,10 +60,9 @@ function createFormHandler(e) {
     throat: throatYes ? "Yes" : "No",
     nose: noseYes ? "Yes" : "No",
     other: other
-  }
-    }
-     
-   ],
+  
+    }],
+
    quarantines_attributes:[{
      startdate: startDate,
      enddate: endDate
