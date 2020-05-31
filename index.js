@@ -1,34 +1,34 @@
 addEventListener('DOMContentLoaded',() => {
-  // const div = document.querySelector(".form-users")
-  // getUsers() its for get users on the DOM for  Fetch Read Test! 
   
   
   const createUsersForm =  document.querySelector("#new-user-form")
   createUsersForm.addEventListener("submit",(e) => createFormHandler(e))
 
-})
 
-//  function getUsers(){
-//    fetch("http://localhost:3000/users")
-//    .then(r => r.json())
-//    .then(users => users.forEach(user =>  renderUsers(user)))
-  
 
-//  }
-   
-//  function renderUsers(user){
-  //  console.log(user.symptoms)
+function getUsers(){
+  fetch("http://localhost:3000/users")
+  .then(r => r.json())
+  .then(users => users.forEach(user =>  renderUsers(user)))
+}
+
+const div = document.querySelector(".users")
+getUsers() //its for get users on the DOM for  Fetch Read Test! 
+function renderUsers(user){
+  // console.log(users)
   
   //  div.className ="card"
+  console.log(user)
 
-  //  const userUl = document.createElement("ul")
-  //  const userLi = document.createElement("li")
-  //  userLi.innerText = `${user.name} ${user.lastname} ${user.age} ${user.gender} , Quarantined for: ${user.quarantines[0].days}  days Symptoms fever: ${user.symptoms[0].fever} cough: ${user.symptoms[0].cough} tiredness ${user.symptoms[0].tiredness} `
-  //  userUl.appendChild(userLi)
-  //  div.appendChild(userUl)
+   const userUl = document.createElement("ul")
+   const userLi = document.createElement("li")
+   userLi.innerText = `${user.name} ${user.lastname} ${user.age} ${user.gender} , Quarantined Start Date: ${user.quarantines[0].startdate}, Quarantined End Date: ${user.quarantines[0].enddate},  Symptoms fever: ${user.symptoms[0].fever}, cough: ${user.symptoms[0].cough}, tiredness: ${user.symptoms[0].breath}, throat: ${user.symptoms[0].throat}, Runny Nose:${user.symptoms[0].nose}`
+   userUl.appendChild(userLi)
+   div.appendChild(userUl)
+  
    
   
-// }
+}
 
 function createFormHandler(e) {
   
@@ -61,8 +61,9 @@ function createFormHandler(e) {
     nose: noseYes ? "Yes" : "No",
     other: other
   
-    }],
-
+    }
+     
+   ],
    quarantines_attributes:[{
      startdate: startDate,
      enddate: endDate
@@ -88,9 +89,11 @@ function postFetchUser (bodyData){
   .then(response => response.json())
   .then(user => {
   console.log(user);
+  const bodyData = user
+  renderUsers(user)
   })
 }
-
+})
 
 
 
