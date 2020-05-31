@@ -6,14 +6,14 @@ addEventListener('DOMContentLoaded',() => {
 
 
 
-function getUsers(){
-  fetch("http://localhost:3000/users")
-  .then(r => r.json())
-  .then(users => users.forEach(user =>  renderUsers(user)))
-}
+// function getUsers(){
+//   fetch("http://localhost:3000/users")
+//   .then(r => r.json())
+//   .then(users => users.forEach(user =>  renderUsers(user)))
+// }
 
 const div = document.querySelector(".users")
-getUsers() //its for get users on the DOM for  Fetch Read Test! 
+// getUsers() //its for get users on the DOM for  Fetch Read Test! 
 function renderUsers(user){
   // console.log(users)
   
@@ -24,7 +24,8 @@ function renderUsers(user){
    const userLi = document.createElement("li")
    userLi.innerText = `${user.name} ${user.lastname} ${user.age} ${user.gender} , Quarantined Start Date: ${user.quarantines[0].startdate}, Quarantined End Date: ${user.quarantines[0].enddate},  Symptoms fever: ${user.symptoms[0].fever}, cough: ${user.symptoms[0].cough}, tiredness: ${user.symptoms[0].breath}, throat: ${user.symptoms[0].throat}, Runny Nose:${user.symptoms[0].nose}`
    userUl.appendChild(userLi)
-   div.appendChild(userUl)
+  div.innerHTML = ""
+  div.appendChild(userUl)
   
    
   
@@ -46,11 +47,13 @@ function createFormHandler(e) {
   const other = document.querySelector("#input-description").value
   const startDate = document.querySelector("#start").value
   const endDate = document.querySelector("#end").value
+  // const numberSymptoms = 
   const bodyData = {
    name: name,
    lastname: lastname,
    gender: gender,
    age:age,
+
    symptoms_attributes:[{
   
     
