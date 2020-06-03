@@ -18,7 +18,7 @@ function renderUsers(user){
   // console.log(users)
   
   //  div.className ="card"
-  console.log(user)
+  // console.log(user)
 
    const userUl = document.createElement("ul")
    const userLi = document.createElement("li")
@@ -26,6 +26,7 @@ function renderUsers(user){
    userUl.appendChild(userLi)
   div.innerHTML = ""
   div.appendChild(userUl)
+  
   
    
   
@@ -47,7 +48,7 @@ function createFormHandler(e) {
   const other = document.querySelector("#input-description").value
   const startDate = document.querySelector("#start").value
   const endDate = document.querySelector("#end").value
-  // const numberSymptoms = 
+   const numberSymptoms = document.querySelector("#percentage")
   const bodyData = {
    name: name,
    lastname: lastname,
@@ -70,7 +71,9 @@ function createFormHandler(e) {
    quarantines_attributes:[{
      startdate: startDate,
      enddate: endDate
-   }]
+   }],
+
+   
     
  
 
@@ -92,11 +95,28 @@ function postFetchUser (bodyData){
   .then(response => response.json())
   .then(user => {
   console.log(user);
-  const bodyData = user
-  renderUsers(user)
+
+  renderUsers(user) 
+  symptomNumber(bodyData.symptoms_attributes)
+  
   })
 }
+function symptomNumber(symptoms){
+  console.log(symptoms)
+    
+  
+    let yesCounter = 0
+    for(let value in symptoms[0]){
+      //console.log(symptoms[0])
+      if(symptoms[0][value]=== 'Yes'){
+        yesCounter ++
+     }
+    }
+   console.log(Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100))
+  
+  }
 })
+
 
 
 
