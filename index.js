@@ -1,8 +1,10 @@
+
 addEventListener('DOMContentLoaded',() => {
   
   
   const createUsersForm =  document.querySelector("#new-user-form")
   createUsersForm.addEventListener("submit",(e) => createFormHandler(e))
+  let displayNumberDiv = document.querySelector("#display-number")
 
 
 
@@ -24,7 +26,7 @@ function renderUsers(user){
    const userLi = document.createElement("li")
    userLi.innerText = `${user.name} ${user.lastname} ${user.age} ${user.gender} , Quarantined Start Date: ${user.quarantines[0].startdate}, Quarantined End Date: ${user.quarantines[0].enddate},  Symptoms fever: ${user.symptoms[0].fever}, cough: ${user.symptoms[0].cough}, tiredness: ${user.symptoms[0].breath}, throat: ${user.symptoms[0].throat}, Runny Nose:${user.symptoms[0].nose}`
    userUl.appendChild(userLi)
-  div.innerHTML = ""
+  div.innerText = ""
   div.appendChild(userUl)
   
   
@@ -35,7 +37,7 @@ function renderUsers(user){
 function createFormHandler(e) {
   
   e.preventDefault()  
-  
+  // let percentageNumber = 0 
   const name = document.querySelector('#input-name').value
   const lastname = document.querySelector('#input-lastname').value
   const age = document.querySelector('#input-age').value
@@ -48,7 +50,8 @@ function createFormHandler(e) {
   const other = document.querySelector("#input-description").value
   const startDate = document.querySelector("#start").value
   const endDate = document.querySelector("#end").value
-   const numberSymptoms = document.querySelector("#percentage")
+  // let displayNumberDiv = document.querySelector("#display-number")
+  // displayNumberDiv.innerHTML = percentageNumber
   const bodyData = {
    name: name,
    lastname: lastname,
@@ -63,7 +66,8 @@ function createFormHandler(e) {
     breath: breathYes ? "Yes" : "No",
     throat: throatYes ? "Yes" : "No",
     nose: noseYes ? "Yes" : "No",
-    other: other
+    other: other,
+    
   
     }
      
@@ -95,13 +99,13 @@ function postFetchUser (bodyData){
   .then(response => response.json())
   .then(user => {
   console.log(user);
-
-  renderUsers(user) 
-  symptomNumber(bodyData.symptoms_attributes)
+//  const bodyData = user
+ renderUsers(user) 
+ symptomNumber(bodyData.symptoms_attributes,user)
   
   })
 }
-function symptomNumber(symptoms){
+function symptomNumber(symptoms,user){
   console.log(symptoms)
     
   
@@ -109,13 +113,19 @@ function symptomNumber(symptoms){
     for(let value in symptoms[0]){
       //console.log(symptoms[0])
       if(symptoms[0][value]=== 'Yes'){
-        yesCounter ++
+       yesCounter ++
      }
+
     }
-   console.log(Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100))
+  console.log(Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100))
   
+  displayNumberDiv.innerHTML =`${user.name},${user.lastname} has infected`+ Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100)+ "%"
+
   }
 })
+
+
+
 
 
 
