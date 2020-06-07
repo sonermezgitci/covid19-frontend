@@ -101,8 +101,8 @@ function postFetchUser (bodyData){
   })
   .then(response => response.json())
   .then(user => {
-  console.log(user);
-//  const bodyData = user
+  console.log(user); /// when we are console.log we have to be sure shape of that what we are getting of user object i am intersted in  
+//  const bodyData = user  // when we console.log we are realize we are taking back user object when i am getting back object user object i am interested in 
  renderUsers(user) 
  symptomNumber(bodyData.symptoms_attributes,user)
   
