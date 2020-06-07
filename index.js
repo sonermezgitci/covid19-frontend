@@ -1,6 +1,9 @@
-
+// JS mantra When the DOM CONTENT is loaded i want to make a get Fetch and then manipulate DOM content Loaded 
+// with render data with renderUsers(user),method below 
 addEventListener('DOMContentLoaded',() => {
-  
+  // Creating DOMCONTENTLOADED event listener to properly set up listener
+  const div = document.querySelector(".users")
+  getUsers() //its for get users on the DOM for  Fetch Read Test! 
   
   const createUsersForm =  document.querySelector("#new-user-form")
   createUsersForm.addEventListener("submit",(e) => createFormHandler(e))
@@ -8,16 +11,16 @@ addEventListener('DOMContentLoaded',() => {
 
 
 
-// function getUsers(){
-//   fetch("http://localhost:3000/users")
-//   .then(r => r.json())
-//   .then(users => users.forEach(user =>  renderUsers(user)))
-// }
+function getUsers(){ // we are creating a function to have FETCH and we passed it On DOMContent loaded)
+  fetch("http://localhost:3000/users")// return the promise has response to take out 
+  .then(r => r.json()) // (r) capturing this respond and parse in the  json 
+  .then(users => users.forEach(user =>  renderUsers(user)))
+  // we get access to json data we are getting user array back (er can name it anything make sense)
+  // i am  getting mu users array and i am gonna get user array and object in the array an i rendered them indivudual 
+}
 
-const div = document.querySelector(".users")
-// getUsers() //its for get users on the DOM for  Fetch Read Test! 
 function renderUsers(user){
-  // console.log(users)
+  console.log(users)
   
   //  div.className ="card"
   // console.log(user)
@@ -26,7 +29,7 @@ function renderUsers(user){
    const userLi = document.createElement("li")
    userLi.innerText = `${user.name} ${user.lastname} ${user.age} ${user.gender} , Quarantined Start Date: ${user.quarantines[0].startdate}, Quarantined End Date: ${user.quarantines[0].enddate},  Symptoms fever: ${user.symptoms[0].fever}, cough: ${user.symptoms[0].cough}, tiredness: ${user.symptoms[0].breath}, throat: ${user.symptoms[0].throat}, Runny Nose:${user.symptoms[0].nose}`
    userUl.appendChild(userLi)
-  div.innerText = ""
+  // div.innerText = ""
   div.appendChild(userUl)
   
   
@@ -119,7 +122,7 @@ function symptomNumber(symptoms,user){
     }
   console.log(Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100))
   
-  displayNumberDiv.innerHTML =`${user.name},${user.lastname} has infected`+ Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100)+ "%"
+  displayNumberDiv.innerHTML =`${user.name} ${user.lastname}  May has  infected by Corana   `+ Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100)+ "%"
 
   }
 })
