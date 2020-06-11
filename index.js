@@ -20,8 +20,12 @@ addEventListener('DOMContentLoaded',() => {
       //each new instances i am going tp push it this(user"first user") 
       // because i create new intsances in my user class everytime i create new instance it goes to my constructor in user.js(user class file)
       //then it push user.all =[]
-      const div = document.querySelector(".users").innerHTML += newUser.renderUsers()
-      // we still need update userdiv after we moved renderUsers to user.js
+      
+      
+      newUser.renderUsers()
+      // debugger
+      
+       // we still need update userdiv after we moved renderUsers to user.js
       // we get acces to return data with newUser.renderUsers()
     // renderUsers(user)
   // we get access to json data we are getting user array back (er can name it anything make sense)
@@ -117,7 +121,8 @@ function postFetchUser (bodyData){
   .then(user => {
   console.log(user); /// when we are console.log we have to be sure shape of that what we are getting of user object i am intersted in  
 //  const bodyData = user  // when we console.log we are realize we are taking back user object when i am getting back object user object i am interested in 
- renderUsers(user) 
+let newUser = new User(user)
+newUser.renderUsers() 
  symptomNumber(bodyData.symptoms_attributes,user)
   
   })
@@ -137,6 +142,7 @@ function symptomNumber(symptoms,user){
   console.log(Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100))
   
   displayNumberDiv.innerHTML =`${user.name} ${user.lastname}  May has  infected by Corana   `+ Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100)+ "%"
+ 
 
   }
 })
