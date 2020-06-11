@@ -23,6 +23,7 @@ addEventListener('DOMContentLoaded',() => {
       
       
       newUser.renderUsers()
+      symptomNumber(user.symptoms,user)
       // debugger
       
        // we still need update userdiv after we moved renderUsers to user.js
