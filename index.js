@@ -2,40 +2,59 @@
 // with render data with renderUsers(user),method below 
 addEventListener('DOMContentLoaded',() => {
   // Creating DOMCONTENTLOADED event listener to properly set up listener
-  const div = document.querySelector(".users")
   getUsers() //its for get users on the DOM for  Fetch Read Test! 
   
   const createUsersForm =  document.querySelector("#new-user-form")
   createUsersForm.addEventListener("submit",(e) => createFormHandler(e))
   let displayNumberDiv = document.querySelector("#display-number")
-
-
-
-function getUsers(){ // we are creating a function to have FETCH and we passed it On DOMContent loaded)
-  fetch("http://localhost:3000/users")// return the promise has response to take out 
-  .then(r => r.json()) // (r) capturing this respond and parse in the  json 
-  .then(users => users.forEach(user =>  renderUsers(user)))
+  
+  
+  
+  function getUsers(){ // we are creating a function to have FETCH and we passed it On DOMContent loaded)
+    fetch("http://localhost:3000/users")// return the promise has response to take out 
+    .then(r => r.json()) // (r) capturing this respond and parse in the  json 
+    .then(users => users.forEach(user => {  
+      
+      //  debugger 
+      let newUser = new User(user)
+      //each new instances i am going tp push it this(user"first user") 
+      // because i create new intsances in my user class everytime i create new instance it goes to my constructor in user.js(user class file)
+      //then it push user.all =[]
+      
+      
+      newUser.renderUsers()
+      symptomNumber(user.symptoms,user)
+      // debugger
+      
+       // we still need update userdiv after we moved renderUsers to user.js
+      // we get acces to return data with newUser.renderUsers()
+    // renderUsers(user)
   // we get access to json data we are getting user array back (er can name it anything make sense)
   // i am  getting mu users array and i am gonna get user array and object in the array an i rendered them indivudual 
+
+  }))
+
+
+
 }
 
-function renderUsers(user){
-  console.log(users)
+// function renderUsers(user){
+//   // console.log(users)
   
-  //  div.className ="card"
-  // console.log(user)
+//   //  div.className ="card"
+//   // console.log(user)
 
-   const userUl = document.createElement("ul")
-   const userLi = document.createElement("li")
-   userLi.innerText = `${user.name} ${user.lastname} ${user.age} ${user.gender} , Quarantined Start Date: ${user.quarantines[0].startdate}, Quarantined End Date: ${user.quarantines[0].enddate},  Symptoms fever: ${user.symptoms[0].fever}, cough: ${user.symptoms[0].cough}, tiredness: ${user.symptoms[0].breath}, throat: ${user.symptoms[0].throat}, Runny Nose:${user.symptoms[0].nose}`
-   userUl.appendChild(userLi)
-  // div.innerText = ""
-  div.appendChild(userUl)
+//    const userUl = document.createElement("ul")
+//    const userLi = document.createElement("li")
+//    userLi.innerText = `${user.name} ${user.lastname} ${user.age} ${user.gender} , Quarantined Start Date: ${user.quarantines[0].startdate}, Quarantined End Date: ${user.quarantines[0].enddate},  Symptoms fever: ${user.symptoms[0].fever}, cough: ${user.symptoms[0].cough}, tiredness: ${user.symptoms[0].breath}, throat: ${user.symptoms[0].throat}, Runny Nose:${user.symptoms[0].nose}`
+//    userUl.appendChild(userLi)
+//   // div.innerText = ""
+//   div.appendChild(userUl)
   
   
    
   
-}
+// }
 
 function createFormHandler(e) {
   
@@ -87,11 +106,11 @@ function createFormHandler(e) {
   }
   postFetchUser(bodyData)
 }
-
 function postFetchUser (bodyData){
+
   //build my body object outside of my fetch 
 
-  console.log(bodyData)
+  // console.log(bodyData)
 
 
   fetch("http://localhost:3000/users", {
@@ -103,7 +122,8 @@ function postFetchUser (bodyData){
   .then(user => {
   console.log(user); /// when we are console.log we have to be sure shape of that what we are getting of user object i am intersted in  
 //  const bodyData = user  // when we console.log we are realize we are taking back user object when i am getting back object user object i am interested in 
- renderUsers(user) 
+let newUser = new User(user)
+newUser.renderUsers() 
  symptomNumber(bodyData.symptoms_attributes,user)
   
   })
@@ -123,6 +143,7 @@ function symptomNumber(symptoms,user){
   console.log(Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100))
   
   displayNumberDiv.innerHTML =`${user.name} ${user.lastname}  May has  infected by Corana   `+ Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100)+ "%"
+ 
 
   }
 })
