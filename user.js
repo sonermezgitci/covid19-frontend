@@ -15,6 +15,7 @@ class User {
   this.gender = user.gender
   this.symptoms = user.symptoms
   this.quarantines = user.quarantines 
+
   // debugger
   
   User.all.push(this)
@@ -28,25 +29,43 @@ class User {
 
  
   renderUsers(){
-   
-     
     this.div = document.querySelector(".users")
     // debugger
-    
-    
     // console.log(user)
-    
-    this.userUl = document.createElement("ul")
-    this.userLi = document.createElement("li")
-    this.userLi.innerText = `${this.name} ${this.lastname} ${this.age} ${this.gender} , Quarantined Start Date: ${this.quarantines[0].startdate}, Quarantined End Date: ${this.quarantines[0].enddate},  Symptoms fever: ${this.symptoms[0].fever}, cough: ${this.symptoms[0].cough}, tiredness: ${this.symptoms[0].breath}, throat: ${this.symptoms[0].throat}, Runny Nose:${this.symptoms[0].nose}` 
-    this.userUl.appendChild(this.userLi)
-    this.div.appendChild(this.userUl)
-  
-  
-   
-  
+    this.userUl = document.createElement("tr")
+    this.userLi = document.createElement("td")
+    this.userLi.innerText = `Name: ${this.name} Last Name: ${this.lastname} Age: ${this.age} Gender: ${this.gender} Quarantined Start Date: ${this.quarantines[0].startdate} Quarantined End Date: ${this.quarantines[0].enddate},  Symptoms fever: ${this.symptoms[0].fever}, cough: ${this.symptoms[0].cough}, tiredness: ${this.symptoms[0].breath}, throat: ${this.symptoms[0].throat}, Runny Nose:${this.symptoms[0].nose} Others: ${this.symptoms[0].other} ` 
+    this.userUl.prepend(this.userLi)
+    this.div.prepend(this.userUl)  
 }
 
+
+// renderUsers2(){
+
+//   this.div = document.querySelector(".users")
+//   // debugger
+//   // console.log(user)
+//   this.userUl = document.createElement("tr")
+
+//   this.userLi = document.createElement("td")
+//   this.userLi.innerText = `${this.name} `  
+//   this.userUl.appendChild(this.userLi)
+
+//   this.userLi2 = document.createElement("td")
+//   this.userLi2.innerText = `${this.lastname}  `  
+//   this.userUl.appendChild(this.userLi2)
+
+//   this.userLi3 = document.createElement("td")
+//   this.userLi3.innerText = ` ${this.age}`
+//   this.userUl.appendChild(this.userLi3)
+
+//   this.div.appendChild(this.userUl)  
+
+
+// }
  
+
+
+
 }
 User.all = []

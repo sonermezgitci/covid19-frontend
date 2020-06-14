@@ -1,9 +1,10 @@
+
 // JS mantra When the DOM CONTENT is loaded i want to make a get Fetch and then manipulate DOM content Loaded 
 // with render data with renderUsers(user),method below 
 addEventListener('DOMContentLoaded',() => {
   // Creating DOMCONTENTLOADED event listener to properly set up listener
   getUsers() //its for get users on the DOM for  Fetch Read Test! 
-  
+
   const createUsersForm =  document.querySelector("#new-user-form")
   createUsersForm.addEventListener("submit",(e) => createFormHandler(e))
   let displayNumberDiv = document.querySelector("#display-number")
@@ -21,7 +22,7 @@ addEventListener('DOMContentLoaded',() => {
       // because i create new intsances in my user class everytime i create new instance it goes to my constructor in user.js(user class file)
       //then it push user.all =[]
       
-      
+
       newUser.renderUsers()
       symptomNumber(user.symptoms,user)
       // debugger
@@ -33,10 +34,8 @@ addEventListener('DOMContentLoaded',() => {
   // i am  getting mu users array and i am gonna get user array and object in the array an i rendered them indivudual 
 
   }))
-
-
-
 }
+
 
 // function renderUsers(user){
 //   // console.log(users)
@@ -63,7 +62,7 @@ function createFormHandler(e) {
   const name = document.querySelector('#input-name').value
   const lastname = document.querySelector('#input-lastname').value
   const age = document.querySelector('#input-age').value
-  const gender = document.querySelector('#input-gender').value
+  const gender = document.querySelector('.gender').value
   const feverYes = document.querySelector("#feverYes").checked
   const coughYes = document.querySelector("#coughYes").checked
   const breathYes = document.querySelector("#breathYes").checked
@@ -83,12 +82,12 @@ function createFormHandler(e) {
    symptoms_attributes:[{
   
     
-    fever: feverYes ? "Yes" : "No",
-    cough: coughYes ?  "Yes" : "No",
-    breath: breathYes ? "Yes" : "No",
-    throat: throatYes ? "Yes" : "No",
-    nose: noseYes ? "Yes" : "No",
-    other: other,
+    fever: feverYes ? 'Yes': 'No' ,
+    cough: coughYes ?  'Yes': 'No' ,
+    breath: breathYes ? 'Yes': 'No',
+    throat: throatYes ? 'Yes': 'No',
+    nose: noseYes ? 'Yes': 'No',
+    other: other ? 'Yes':'No'
     
   
     }
@@ -129,7 +128,7 @@ newUser.renderUsers()
   })
 }
 function symptomNumber(symptoms,user){
-  console.log(symptoms)
+  // console.log(symptoms)
     
   
     let yesCounter = 0
@@ -137,12 +136,13 @@ function symptomNumber(symptoms,user){
       //console.log(symptoms[0])
       if(symptoms[0][value]=== 'Yes'){
        yesCounter ++
-     }
 
     }
-  console.log(Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100))
+
+    }
+ console.log(Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100))
   
-  displayNumberDiv.innerHTML =`${user.name} ${user.lastname}  May has  infected by Corana   `+ Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100)+ "%"
+  displayNumberDiv.innerHTML =`${user.name} ${user.lastname}:  May have been infected with Virus `+ Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100)+ "%"
  
 
   }

@@ -4,142 +4,110 @@
   <head>
     
     <meta charset="utf-8">
-    <title></title>
-    <link rel ="stylesheet"href="./css/main.css">
+    <title>Covid Tracer</title>
+    <link rel ="stylesheet" href="./css/main.css">
    
     <script type="text/javascript" src="index.js"></script>
     <script type="text/javascript" src="user.js"></script>
   </head>
   <body>
       <header>
-          <h2>Covid-19 Tracer </h2>
+          <h2>Covid-19 TRACER </h2>
       </header>
       
     
     <form id="new-user-form">
       <div class ="container">
-          
-          
-        
-        
-           <img src="" alt="" class="">
-              
-            <img src="images/coronadetails.png" alt="covid-logo" class="small-logo" id="small-logo">
-          </a>
-
-            <ul class="show-desktop hide-desktop" id="nav">
-
-          </ul>
-           </nav>
-           <form id="users-form">
-             
-              <div class="form-container">
-        
-                  <main>
-                  <h2>Users</h2> 
-                  </main>
-                  <div class="users">
-                    
-        
-                  </form>
-        
-                  </div>
-           
-     
-      <p>Please fill in this form to create an account.</p>
-    
-       
-      <hr>
-    
+        <img src="images/coronadetails.png" alt="covid-logo" class="small-logo" id="small-logo"/>
+      
+        <p>Please fill in this form to create an account.</p>
+        <hr/>
         <label for="name"><b>Name</b></label>
-        <input id= 'input-name' type="text" placeholder="Enter First Name" name="name" required>
+        <br/>
+        <input id= 'input-name' type="text"  placeholder="Enter First Name" name="name" required>
+        <br/>
         <label for="lastname"><b>Lastname</b></label>
-        <input id= 'input-lastname'type="text" placeholder="Enter Lastname" name="lastname" required>
+        <br/>
+        <input id= 'input-lastname' type="text" placeholder="Enter Lastname" name="lastname" required>
+        <br>
+        <label><b>Gender</b></label>
+        <br/>
+        <select class= "gender">
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        <br/>
         <label for="age"><b>Age</b></label>
-        <input id= 'input-age'type="number" name="age" value="" required>
-        <label for="age"><b>
-          <br></br>
-        <label>Gender</b></label>
-        <input id='input-gender'type="radio" name="gender"   value="Male">Male
-        <input type="radio" name="gender"   value="Female">Female
-        <input type="radio" name="gender"   value="Other">Other
-       
-        <br></br>
-        <hr>
-    
-
-        <div class ="container">
-       
-      <h3>SYMPTOMS</h3>
-          
-        
+        <input id= 'input-age' type="number" name="age" value="0" required>
+        <br/>
+      
+        <h3>SYMPTOMS</h3>
         <label for="select-breed">Fever greater than 100 degrees </label>
-          <input type="radio" name="fever" id="feverYes" value="Yes">Yes
-          <input type="radio" name="fever" id="feverNo"  value= "No"> No
-          
-         </select>
-        <br><br>
-
-          <label for="select-breed">Dry Cough</label>
-          <input type="radio" name="cough" id="coughYes" value="Yes">Yes
-          <input type="radio" name="cough" id="coughNo"  value ="No">No
-          </select>
-          
-
-          <br><br>
-          <label for="select-breed">Shortness of Breath</label>
-          <input type="radio" name="breath" id="breathYes" value="Yes">Yes
-          <input type="radio" name="breath" id="breathNo"  value="No">No
-          </select>
-          <br></br>
-
-           <label for="select-breed">Sore Throat</label>
-           <input type="radio" name="throat" id="throatYes" value="Yes">Yes
-           <input type="radio" name="throat" id="throatNo"  value="No">No
-           </select>
-           <br><br>
-           
-           <label for="select-breed">Runny Nose</label>
-           <input type="radio" name="nose" id="noseYes" value="Yes">Yes
-           <input type="radio" name="nose" id="noseNo"  value="No">No
-           
-           </select>
-           <br></br>
-           
-           <label for="select-breed">Other</label>
-           <br><br>
-           <textarea id='input-description' name="description" rows="10" cols="110" value="" placeholder="Enter your other symptoms..."></textarea>
-          </form>
-          </div>
-        <hr>
-        <form id="quarantine-form">
-          <h3> QUARANTINE PERIOD </h3>
-          <label for="start">Start date:</label>
-
-<input type="date" id="start" name="trip-start"
-       value="2020-01-01"
-       min="2019-12-01" max="2025-12-31">
-       <br></br>
-       <label for="start">End date:</label>
-
-<input type="date" id="end" name="trip-end"
-       value="2020-01-01"
-       min="2019-12-01" max="2025-12-31">
-          <br><br>
-          
-        </form>
-          <input type="submit" name="submit">
-        </form>
-      </div>
-      <div class="users" id="users">
-      </div>
-      <ul>
+        <input type="radio" name="fever" id="feverYes" value="Yes">Yes
+        <input type="radio" name="fever" id="feverNo"  value= "No"> No
         
-        <li id="display-number">
-        </li> 
-      </ul>
+        <br/><br/>
+        
+        <label for="select-breed">Dry Cough</label>
+        <input type="radio" name="cough" id="coughYes" value="Yes">Yes
+        <input type="radio" name="cough" id="coughNo"  value ="No">No
+        
+        
+        <br/><br/>
+        <label for="select-breed">Shortness of Breath</label>
+        <input type="radio" name="breath" id="breathYes" value="Yes">Yes
+        <input type="radio" name="breath" id="breathNo"  value="No">No
+        <br/><br/>
+        
+        <label for="select-breed">Sore Throat</label>
+        <input type="radio" name="throat" id="throatYes" value="Yes">Yes
+        <input type="radio" name="throat" id="throatNo"  value="No">No
+        <br/><br/>
+        
+        <label for="select-breed">Runny Nose</label>
+        <input type="radio" name="nose" id="noseYes" value="Yes">Yes
+        <input type="radio" name="nose" id="noseNo"  value="No">No           
+        <br/><br/>
+        
+        <label for="select-breed">Other</label>
+        <br/><br/>
+        <textarea id='input-description' name="description" rows="10" cols="110" placeholder="Enter your other symptoms..."></textarea>
    
-        </body>
-     
-        </body>
-        </html>
+    <hr>
+
+       <h3> QUARANTINE PERIOD </h3>
+      <label for="start">Start date:</label>
+      
+      <input type="date" id="start" name="trip-start"
+      value="2020-01-01"
+      min="2019-12-01" max="2025-12-31">
+      <br/><br/>
+      <label for="start">End date:</label>
+      
+      <input type="date" id="end" name="trip-end"
+      value="2020-01-01"
+      min="2019-12-01" max="2025-12-31">
+      <br/><br/>
+      
+    <input type="submit" name="submit">
+  </div>
+</form>
+
+<div class="c1">
+  <ul>
+    <li class="c2">
+      <a id="display-number"></a>
+    </li> 
+  </ul>
+</div>
+
+
+              
+<h2> Users Data </h2>     
+<div class="users" id="users"> </div>
+<div class="form-container">
+
+
+</body>
+</html>
