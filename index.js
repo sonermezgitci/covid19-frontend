@@ -64,29 +64,29 @@ function createFormHandler(e) {
    }],
 
   }
-  postFetchUser(bodyData) 
+  postFetchUser(bodyData)  //phase 2 execution 
 }
-function postFetchUser (bodyData){
+function postFetchUser (bodyData){ // phase 1  hoisting complilation part 
 // console.log(bodyData)
 
 
   fetch("http://localhost:3000/users", {
     method: "POST",
     headers: { "Content-Type": "application/json"},
-    body: JSON.stringify(bodyData)
+    body: JSON.stringify(bodyData) // goes my controller to create a new user 
   })
   .then(response => response.json()) 
-  .then(user => { 
+  .then(user => { // gettin user from my back end to  my front end 
   // console.log(user); 
 let newUser = new User(user)
 newUser.renderUsers() 
- symptomNumber(bodyData.symptoms_attributes,user)
+ symptomNumber(bodyData.symptoms_attributes,newUser)
   
   })
 }
 function symptomNumber(symptoms,user){
   // console.log(symptoms)
-    let yesCounter = 0
+    let yesCounter = 0 ///
     for(let value in symptoms[0]){
       
       if(symptoms[0][value]=== 'Yes'){
@@ -95,9 +95,9 @@ function symptomNumber(symptoms,user){
     }
 
     }
- console.log(Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100))
+ console.log(Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100)) 
   
-  displayNumberDiv.innerHTML =`${user.name} ${user.lastname}:  May have been infected with Virus `+ Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100)+ "%"
+  displayNumberDiv.innerHTML =`${user.name} ${user.lastname};  May have been infected with Virus `+ Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100)+ "%"
  
 
   }
