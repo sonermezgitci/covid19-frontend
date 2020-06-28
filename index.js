@@ -1,7 +1,9 @@
-addEventListener('DOMContentLoaded',() => {
- 
-  getUsers() 
 
+addEventListener('DOMContentLoaded',() => {
+  getUsers() 
+  const userDiv = document.querySelector(".users")
+  
+ 
   const createUsersForm =  document.querySelector("#new-user-form")
   createUsersForm.addEventListener("submit",(e) => createFormHandler(e))
   let displayNumberDiv = document.querySelector("#display-number")
@@ -9,16 +11,45 @@ addEventListener('DOMContentLoaded',() => {
   function getUsers(){ 
     fetch("http://localhost:3000/users") 
     .then(r => r.json()) 
-    .then(users => users.forEach(user => {  
-
+    .then(users => {users.sort(function(a,b){
+      // console.log(users)
+      if(a.age > b.age){
+        return  - 1
+        
+      } if( a.age < b.age ) {
+        
+        return 1 
+      }
+      
+      return 0 
+    }) 
+    users.forEach( user => {
+      // console.log(user)
+  
+  
+    
+  
+      
       let newUser = new User(user)
-      newUser.renderUsers()
-      symptomNumber(user.symptoms,user)
+     
+        
+        newUser.renderUsers()
+        // symptomNumber(user.symptoms,user)
+
+    })
+   
+   
+  
+    
+
       
     
 
-  }))
+  })
+  
 }
+
+
 
 
 function createFormHandler(e) {
@@ -39,10 +70,10 @@ function createFormHandler(e) {
   const endDate = document.querySelector("#end").value
   
   const bodyData = {
-   name: name,
-   lastname: lastname,
-   gender: gender,
-   age:age,
+   name,
+   lastname,
+   gender,
+   age,
 
    symptoms_attributes:[{
   
@@ -59,8 +90,8 @@ function createFormHandler(e) {
      
    ],
    quarantines_attributes:[{
-     startdate: startDate,
-     enddate: endDate
+     startDate,
+     endDate
    }],
 
   }
@@ -78,14 +109,18 @@ function postFetchUser (bodyData){ // phase 1  hoisting complilation part
   .then(response => response.json()) 
   .then(user => { // gettin user from my back end to  my front end 
   // console.log(user); 
-let newUser = new User(user)
-newUser.renderUsers() 
- symptomNumber(bodyData.symptoms_attributes,newUser)
+    // let newUser = new User(user)
+    // newUser.renderUsers() 
+    symptomNumber(user.symptoms,user)
+    userDiv.innerHTML = ""
+    getUsers()
+
+//  debugger
   
   })
 }
 function symptomNumber(symptoms,user){
-  // console.log(symptoms)
+  console.log(user)
     let yesCounter = 0 ///
     for(let value in symptoms[0]){
       
@@ -98,7 +133,7 @@ function symptomNumber(symptoms,user){
  console.log(Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100)) 
   
   displayNumberDiv.innerHTML =`${user.name} ${user.lastname};  May have been infected with Virus `+ Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100)+ "%"
- 
+ //`${}` <- Template Literal
 
   }
 })
