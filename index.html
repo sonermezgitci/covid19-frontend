@@ -6,13 +6,13 @@
     <meta charset="utf-8">
     <title>Covid Tracer</title>
     <link rel ="stylesheet" href="./css/main.css">
-   
+      
     <script type="text/javascript" src="index.js"></script>
     <script type="text/javascript" src="user.js"></script>
   </head>
   <body>
       <header>
-          <h2>Covid-19 TRACER </h2>
+          <h2>Covid-19 HUNTER </h2>
       </header>
       
     
@@ -73,33 +73,39 @@
         <label for="select-breed">Other</label>
         <br/><br/>
         <textarea id='input-description' name="description" rows="10" cols="110" placeholder="Enter your other symptoms..."></textarea>
-              <div class="c1">
-                <ul>
-                  <li class="c2">
-                    <a id="display-number"></a>
-                  </li> 
-                </ul>
-              </div>
-   
-    <hr>
+        <hr>
+        
+        
+        <h3> QUARANTINE PERIOD </h3>
+        <label for="start">Start date:</label>
+        
+        <input type="date" id="start" name="trip-start"
+        value="2020-01-01"
+        min="2019-12-01" max="2025-12-31">
+        <br/><br/>
+        <label for="start">End date:</label>
+        
+        <input type="date" id="end" name="trip-end"
+        value="2020-01-01"
+        min="2019-12-01" max="2025-12-31">
+        <br/><br/>
+        
+        <input type="submit" name="submit">
+      </div>
+    </form>
 
-       <h3> QUARANTINE PERIOD </h3>
-      <label for="start">Start date:</label>
-      
-      <input type="date" id="start" name="trip-start"
-      value="2020-01-01"
-      min="2019-12-01" max="2025-12-31">
-      <br/><br/>
-      <label for="start">End date:</label>
-      
-      <input type="date" id="end" name="trip-end"
-      value="2020-01-01"
-      min="2019-12-01" max="2025-12-31">
-      <br/><br/>
-      
-    <input type="submit" name="submit">
-  </div>
-</form>
+    
+              <div class="split right">
+                <h3> COVID-19 REPORT </h3>
+              <div class="centered"
+                  <li class="c2">
+                   <img src="images/avatar.png" alt="Avatar Man" >
+                   <br></br>
+                   <a id="display-number"></a>
+                  </li> 
+              
+                </div>
+              </div>
 
 
 
