@@ -12,7 +12,7 @@ addEventListener('DOMContentLoaded',() => {
     fetch("http://localhost:3000/users") 
     .then(r => r.json()) 
     .then(users => {users.sort(function(a,b){
-      // console.log(users)
+   
       if(a.age > b.age){
         return  - 1
         
@@ -25,16 +25,7 @@ addEventListener('DOMContentLoaded',() => {
     }) 
     users.forEach( user => {
      
-     //let newUser = new User(user)
-     //console.log(typeof newUser)
-    //  newUser.renderUsers()
-
-      //Calling static renderUsers method from User Class to 
-      //display user data
       User.renderUsers(user)
-     // console.log(typeof user)
-
-        // symptomNumber(user.symptoms,user)
 
     })
 
@@ -42,9 +33,6 @@ addEventListener('DOMContentLoaded',() => {
   })
   
 }
-
-
-
 
 function createFormHandler(e) {
   
@@ -89,10 +77,10 @@ function createFormHandler(e) {
    }],
 
   }
-  postFetchUser(bodyData)  //phase 2 execution 
+  postFetchUser(bodyData)  
 }
-function postFetchUser (bodyData){ // phase 1  hoisting complilation part 
-// console.log(bodyData)
+function postFetchUser (bodyData){ 
+
 
 
   fetch("http://localhost:3000/users", {
@@ -102,18 +90,12 @@ function postFetchUser (bodyData){ // phase 1  hoisting complilation part
   })
   .then(response => response.json()) 
   .then(user => { 
-    // console.log(user); 
-
-    //original implementation by creating new object
-    // let newUser = new User(user)
-    // newUser.renderUsers();
+   
 
   User.renderUsers(user)
     symptomNumber(user.symptoms,user)
     userDiv.innerHTML = ""
     getUsers()
-
-//  debugger
   
   })
 }
@@ -131,7 +113,7 @@ function symptomNumber(symptoms,user){
  console.log(Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100)) 
   
   displayNumberDiv.innerHTML =`${user.name} ${user.lastname};  May have been infected with Virus `+ Math.floor(yesCounter/(Object.keys(symptoms[0]).length)*100)+ "%"
- //`${}` <- Template Literal
+ 
 
   }
 })

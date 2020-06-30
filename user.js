@@ -15,7 +15,7 @@ class User {
   
  }
 
-static renderUsers(user){ //changed static
+static renderUsers(user){
 
   this.div = document.querySelector(".users")
   // debugger
@@ -28,4 +28,3 @@ static renderUsers(user){ //changed static
 
 }
 User.all = []
-// User.renderUsers()
