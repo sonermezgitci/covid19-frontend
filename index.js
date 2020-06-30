@@ -24,23 +24,20 @@ addEventListener('DOMContentLoaded',() => {
       return 0 
     }) 
     users.forEach( user => {
-      // console.log(user)
-  
-      
-      let newUser = new User(user)
      
-        
-        newUser.renderUsers()
+     //let newUser = new User(user)
+     //console.log(typeof newUser)
+    //  newUser.renderUsers()
+
+      //Calling static renderUsers method from User Class to 
+      //display user data
+      User.renderUsers(user)
+     // console.log(typeof user)
+
         // symptomNumber(user.symptoms,user)
 
     })
-   
-   
-  
-    
 
-      
-    
 
   })
   
@@ -94,8 +91,8 @@ function createFormHandler(e) {
   }
   postFetchUser(bodyData)  //phase 2 execution 
 }
-function postFetchUser (bodyData){ // phase 1  hoisting compilation part 
-
+function postFetchUser (bodyData){ // phase 1  hoisting complilation part 
+// console.log(bodyData)
 
 
   fetch("http://localhost:3000/users", {
@@ -105,12 +102,18 @@ function postFetchUser (bodyData){ // phase 1  hoisting compilation part
   })
   .then(response => response.json()) 
   .then(user => { 
-  
+    // console.log(user); 
+
+    //original implementation by creating new object
+    // let newUser = new User(user)
+    // newUser.renderUsers();
+
+  User.renderUsers(user)
     symptomNumber(user.symptoms,user)
     userDiv.innerHTML = ""
     getUsers()
 
-
+//  debugger
   
   })
 }
