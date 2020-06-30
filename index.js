@@ -26,9 +26,6 @@ addEventListener('DOMContentLoaded',() => {
     users.forEach( user => {
       // console.log(user)
   
-  
-    
-  
       
       let newUser = new User(user)
      
@@ -97,25 +94,23 @@ function createFormHandler(e) {
   }
   postFetchUser(bodyData)  //phase 2 execution 
 }
-function postFetchUser (bodyData){ // phase 1  hoisting complilation part 
-// console.log(bodyData)
+function postFetchUser (bodyData){ // phase 1  hoisting compilation part 
+
 
 
   fetch("http://localhost:3000/users", {
     method: "POST",
     headers: { "Content-Type": "application/json"},
-    body: JSON.stringify(bodyData) // goes my controller to create a new user 
+    body: JSON.stringify(bodyData) 
   })
   .then(response => response.json()) 
-  .then(user => { // gettin user from my back end to  my front end 
-  // console.log(user); 
-    // let newUser = new User(user)
-    // newUser.renderUsers() 
+  .then(user => { 
+  
     symptomNumber(user.symptoms,user)
     userDiv.innerHTML = ""
     getUsers()
 
-//  debugger
+
   
   })
 }
