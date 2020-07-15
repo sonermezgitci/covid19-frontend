@@ -1,7 +1,7 @@
 const div = document.querySelector(".users")
 class User {
  constructor(user){ 
-  //  debugger
+
   this.id = user.id
   this.name = user.name
   this.lastname = user.lastname
