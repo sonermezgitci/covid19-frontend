@@ -9,6 +9,7 @@ addEventListener('DOMContentLoaded',() => {
   let displayNumberDiv = document.querySelector("#display-number")
   
   function getUsers(){ 
+    console.log(getusers())
     fetch("http://localhost:3000/users") 
     .then(r => r.json()) 
     .then(users => {users.sort(function(a,b){
